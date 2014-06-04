@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<idea-plugin version="2">
+    <id>cucumber-javascript-plugin</id>
+    <name>Cucumber.js-plugin</name>
+    <description>Alternative Cucumber JS Runner</description>
+    <version>0.0.5</version>
+    <depends>com.intellij.modules.ultimate</depends>
+    <depends>cucumber</depends>
+    <depends>JavaScript</depends>
+    <vendor>JetBrains</vendor>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <configurationType implementation="ubs.js.cucumber.run.JsCucumberRunConfigurationType"/>
+        <runConfigurationProducer implementation="ubs.js.cucumber.run.JsCucumberRunConfigurationProducer"/>
+        <programRunner implementation="ubs.js.cucumber.run.JsCucumberRunner" order="first"/>
+        <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
+    </extensions>
+
+    <!--<extensions defaultExtensionNs="org.jetbrains.plugins.cucumber.steps">-->
+        <!--<cucumberJvmExtensionPoint implementation="ubs.js.cucumber.CucumberJsExtension"/>-->
+    <!--</extensions>-->
+</idea-plugin>
