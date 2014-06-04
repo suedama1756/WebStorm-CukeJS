@@ -1,9 +1,10 @@
 <component name="libraryTable">
   <library name="NodeJS">
     <CLASSES>
-      <root url="jar:///Applications/WebStorm.app/plugins/NodeJS/lib/NodeJS.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/plugins/NodeJS/lib/NodeJS.jar!/" />
     </CLASSES>
-    <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://C:/Users/Jason/AppData/Local/Temp/intellijad" />
+    </SOURCES>
   </library>
 </component>

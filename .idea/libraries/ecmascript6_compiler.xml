@@ -1,12 +1,8 @@
 <component name="libraryTable">
   <library name="ecmascript6-compiler">
     <CLASSES>
-      <root url="jar:///Applications/WebStorm.app/plugins/JavaScriptLanguage/lib/ecmascript6-compiler.jar!/" />
-      <root url="jar:///Applications/WebStorm.app/plugins/JavaScriptLanguage/lib/javascript-openapi.jar!/" />
-      <root url="jar:///Applications/WebStorm.app/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/" />
-      <root url="jar:///Applications/WebStorm.app/plugins/JavaScriptLanguage/lib/js-test-common.jar!/" />
+      <root url="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/ecmascript6-compiler.jar!/" />
     </CLASSES>
-    <JAVADOC />
     <SOURCES />
   </library>
 </component>

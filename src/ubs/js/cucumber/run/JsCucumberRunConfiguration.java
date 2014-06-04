@@ -17,6 +17,8 @@ import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.util.xmlb.XmlSerializer;
+import com.jetbrains.nodejs.execution.NodeCommandLineState;
+import com.jetbrains.nodejs.run.NodeJSRunConfiguration;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +26,7 @@ import ubs.js.cucumber.run.ui.JsCucumberConfigurationEditorForm;
 
 
 public class JsCucumberRunConfiguration
-        extends LocatableConfigurationBase
+        extends NodeJSRunConfiguration
 {
     private final static String errorPath = JsCucumberRunConfiguration.class.getCanonicalName().replace('.', '/');
     private final JsCucumberRunnerParameters parameters = new JsCucumberRunnerParameters();
@@ -45,27 +47,34 @@ public class JsCucumberRunConfiguration
     public RunProfileState getState(@NotNull Executor executor, @NotNull ExecutionEnvironment env)
             throws ExecutionException
     {
-        if (executor == null) {
-            throw new IllegalArgumentException(String.format("Argument %s for @NotNull parameter of %s.%s must not be null",
-                    "0", errorPath, "getState"));
-        }
-        if (env == null) {
-            throw new IllegalArgumentException(String.format("Argument %s for @NotNull parameter of %s.%s must not be null",
-                    "1", errorPath, "getState" ));
-        }
-        Project project = env.getProject();
-        String path = this.parameters.getFilePath();
-        if ((path == null) || (VirtualFileManager.getInstance().findFileByUrl(VfsUtilCore.pathToUrl(path)) == null)) {
-            throw new ExecutionException("Can't find file: " + path);
-        }
-        VirtualFile virtualFile = VirtualFileManager.getInstance().findFileByUrl(VfsUtilCore.pathToUrl(path));
-        assert (virtualFile != null);
-        Module module = ModuleUtilCore.findModuleForFile(virtualFile, project);
-        if (module == null) {
-            throw new ExecutionException("Can't find module for file");
-        }
-        return new JsCucumberRunningState(env, this.parameters, this);
+        this.setPathToJSFile("D:\\Work\\test.js");
+        this.setWorkingDir("D:\\Work");
+        this.setShowConsoleOnStdErr(true);
+        this.setShowConsoleOnStdOut(true);
+
+        return super.getState(executor, env);
     }
+//        if (executor == null) {
+//            throw new IllegalArgumentException(String.format("Argument %s for @NotNull parameter of %s.%s must not be null",
+//                    "0", errorPath, "getState"));
+//        }
+//        if (env == null) {
+//            throw new IllegalArgumentException(String.format("Argument %s for @NotNull parameter of %s.%s must not be null",
+//                    "1", errorPath, "getState" ));
+//        }
+//        Project project = env.getProject();
+//        String path = this.parameters.getFilePath();
+//        if ((path == null) || (VirtualFileManager.getInstance().findFileByUrl(VfsUtilCore.pathToUrl(path)) == null)) {
+//            throw new ExecutionException("Can't find file: " + path);
+//        }
+//        VirtualFile virtualFile = VirtualFileManager.getInstance().findFileByUrl(VfsUtilCore.pathToUrl(path));
+//        assert (virtualFile != null);
+//        Module module = ModuleUtilCore.findModuleForFile(virtualFile, project);
+//        if (module == null) {
+//            throw new ExecutionException("Can't find module for file");
+//        }
+//        return new NodeCommandLineState(env, this.parameters, this);
+//    }
 
     public void checkConfiguration()
             throws RuntimeConfigurationException
