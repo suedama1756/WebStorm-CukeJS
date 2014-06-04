@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="cucumber">
     <CLASSES>
-      <root url="jar:///Applications/WebStorm.app/plugins/cucumber/lib/cucumber.jar!/" />
+      <root url="jar://C:/Program Files (x86)/JetBrains/WebStorm 8.0/plugins/cucumber/lib/cucumber.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
