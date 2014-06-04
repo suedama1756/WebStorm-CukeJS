@@ -1,0 +1,8 @@
+<component name="libraryTable">
+  <library name="NodeJS">
+    <CLASSES>
+      <root url="jar://$APPLICATION_HOME_DIR$/plugins/NodeJS/lib/NodeJS.jar!/" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>
