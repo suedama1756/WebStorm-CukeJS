@@ -2,9 +2,6 @@
   <library name="ecmascript6-compiler">
     <CLASSES>
       <root url="jar://C:/Program Files (x86)/JetBrains/WebStorm 8.0/plugins/JavaScriptLanguage/lib/ecmascript6-compiler.jar!/" />
-      <root url="jar://C:/Program Files (x86)/JetBrains/WebStorm 8.0/plugins/JavaScriptLanguage/lib/javascript-openapi.jar!/" />
-      <root url="jar://C:/Program Files (x86)/JetBrains/WebStorm 8.0/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/" />
-      <root url="jar://C:/Program Files (x86)/JetBrains/WebStorm 8.0/plugins/NodeJS/lib/NodeJS.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

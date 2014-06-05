@@ -8,20 +8,16 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.TextComponentAccessor;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
 import com.intellij.openapi.vfs.VirtualFile;
-
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
+import com.intellij.webcore.ui.SwingHelper;
 import com.jdml.cucumber.js.execution.CucumberRunConfiguration;
 import com.jetbrains.nodejs.settings.NodeSettingsUtil;
-import com.jetbrains.nodejs.util.RelativePathUIUtil;
+import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.plugins.cucumber.psi.GherkinFileType;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class CucumberConfigurationEditor
@@ -65,7 +61,7 @@ public class CucumberConfigurationEditor
         this.featurePathField.setText(configuration.getRunnerParameters().getFeaturePath());
         this.argumentsField.setText(configuration.getRunnerParameters().getArguments());
         this.cucumberPathField.setText(configuration.getRunnerParameters().getCucumberPath());
-        if (this.cucumberPathField.getText().equals("")) {
+        if (StringUtils.isBlank(this.cucumberPathField.getText())) {
             this.cucumberPathField.setText(this.guessCucumberInstallationPath());
         }
     }
@@ -89,15 +85,10 @@ public class CucumberConfigurationEditor
         this.cucumberPathField = createCucumberPathField(this.project);
     }
 
-    private static TextFieldWithBrowseButton createCucumberPathField(Project project) {
-        JTextField workingDir = new JTextField();
-        workingDir.setText(project.getBasePath());
-        FileChooserDescriptor descriptor =
-                FileChooserDescriptorFactory.createSingleFolderDescriptor();
-        TextFieldWithBrowseButton result = RelativePathUIUtil.createRelativePathTextFieldAndTrackBaseDirChanges(project,
-                descriptor, workingDir.getDocument());
-        result.addBrowseFolderListener(null, null, project, descriptor,
-                TextComponentAccessor.TEXT_FIELD_WHOLE_TEXT);
+    private static TextFieldWithBrowseButton createCucumberPathField(@NotNull Project project) {
+        TextFieldWithBrowseButton result = new TextFieldWithBrowseButton();
+        SwingHelper.installFileCompletionAndBrowseDialog(project, result,
+                "", FileChooserDescriptorFactory.createSingleFolderDescriptor());
         return result;
     }
 }

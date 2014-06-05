@@ -7,7 +7,6 @@ import com.intellij.openapi.extensions.Extensions;
 import com.intellij.openapi.project.Project;
 import icons.CucumberIcons;
 
-
 public class CucumberConfigurationType
         extends ConfigurationTypeBase
 {

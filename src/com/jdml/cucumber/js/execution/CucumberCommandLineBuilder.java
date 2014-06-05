@@ -16,17 +16,10 @@ public class CucumberCommandLineBuilder {
         _project = project;
     }
 
-    private String resolvePath(String path) {
-        if (!FileUtil.isAbsolute(path)) {
-            path = FileUtil.join(_project.getBasePath(), path);
-        }
-        return path;
-    }
-
     private String getWorkingDirectory(CucumberRunSettings runSettings) {
-        String path = resolvePath(runSettings.getFeaturePath());
+        String featurePath = runSettings.getFeaturePath();
 
-        File file = new File(path);
+        File file = new File(featurePath);
         return file.exists() && file.isDirectory() ?
                 file.getPath() :
                 file.getParentFile().getPath();
@@ -43,11 +36,12 @@ public class CucumberCommandLineBuilder {
         }
 
         //  add path to cucumber.js
-        String parameter = resolvePath(FileUtil.join(runSettings.getCucumberPath(), "bin/cucumber.js"));
+        String parameter = FileUtil.join(runSettings.getCucumberPath(),
+                "bin/cucumber.js");
         commandLine.addParameter(parameter);
 
         //  add feature path
-        parameter = resolvePath(runSettings.getFeaturePath());
+        parameter = runSettings.getFeaturePath();
         commandLine.addParameter(parameter);
 
         //  pull in default require options

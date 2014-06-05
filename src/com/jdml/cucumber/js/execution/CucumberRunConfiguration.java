@@ -11,7 +11,6 @@ import com.intellij.openapi.util.WriteExternalException;
 import com.intellij.openapi.vfs.VfsUtilCore;
 import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.util.net.NetUtils;
-import com.intellij.util.xmlb.XmlSerializer;
 import com.jdml.cucumber.js.execution.ui.CucumberConfigurationEditor;
 import com.jetbrains.nodejs.debug.NodeJSDebuggableConfiguration;
 import com.jetbrains.nodejs.debug.NodeJSFileFinder;
@@ -26,7 +25,6 @@ public class CucumberRunConfiguration
         extends LocatableConfigurationBase
         implements NodeJSDebuggableConfiguration
 {
-    private final static String errorPath = CucumberRunConfiguration.class.getCanonicalName().replace('.', '/');
     private final CucumberRunConfigurationParameters parameters = new CucumberRunConfigurationParameters();
 
     protected CucumberRunConfiguration(Project project, ConfigurationFactory factory, String name)
@@ -52,14 +50,11 @@ public class CucumberRunConfiguration
         throws ExecutionException
     {
         checkConfigurationForState();
-
         CucumberRunSettings settings = new CucumberRunSettings.Builder()
                 .setArguments(parameters.getArguments())
                 .setCucumberPath(parameters.getCucumberPath())
                 .setFeaturePath(parameters.getFeaturePath())
-                .setDebugPort(debugPort)
                 .build();
-
         return new CucumberRunProfileState(this, settings, environment);
     }
 
@@ -88,14 +83,14 @@ public class CucumberRunConfiguration
             throws WriteExternalException
     {
         super.writeExternal(element);
-        XmlSerializer.serializeInto(this.parameters, element);
+        CucumberRunConfigurationParametersSerializer.write(element, parameters);
     }
 
     public void readExternal(Element element)
             throws InvalidDataException
     {
         super.readExternal(element);
-        XmlSerializer.deserializeInto(this.parameters, element);
+        CucumberRunConfigurationParametersSerializer.readInto(element, parameters);
     }
 
     public CucumberRunConfigurationParameters getRunnerParameters()

@@ -1,11 +1,5 @@
 package com.jdml.cucumber.js.execution;
 
-import com.intellij.execution.configurations.RunnerSettings;
-import com.intellij.openapi.util.InvalidDataException;
-import com.intellij.openapi.util.WriteExternalException;
-import org.jdom.Element;
-import org.jetbrains.annotations.NotNull;
-
 public final class CucumberRunSettings
 {
     private String _featurePath;

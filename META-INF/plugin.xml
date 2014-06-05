@@ -3,10 +3,11 @@
     <id>cucumber-javascript-plugin</id>
     <name>Cucumber.js-plugin</name>
     <description>Alternative Cucumber JS Runner</description>
-    <version>0.0.5</version>
+    <version>0.0.6</version>
     <depends>com.intellij.modules.ultimate</depends>
     <depends>cucumber</depends>
     <depends>JavaScript</depends>
+    <depends>JavaScriptDebugger</depends>
     <depends>NodeJS</depends>
     <vendor>JetBrains</vendor>
     <extensions defaultExtensionNs="com.intellij">
