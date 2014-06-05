@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact name="CukeJS">
-    <output-path>$PROJECT_DIR$/out/artifacts/CukeJS</output-path>
+  <artifact build-on-make="true" name="CukeJS">
+    <output-path>$PROJECT_DIR$/out/plugin/content/CukeJS</output-path>
     <properties id="ant-postprocessing">
       <options enabled="true">
         <file>file://$PROJECT_DIR$/CukeJS.xml</file>
@@ -11,9 +11,7 @@
       <element id="directory" name="lib">
         <element id="file-copy" path="$PROJECT_DIR$/src/com/jdml/cucumber/js/execution/cucumberjs_nix.js" />
         <element id="file-copy" path="$PROJECT_DIR$/src/com/jdml/cucumber/js/execution/cucumberjs_windows.js" />
-        <element id="archive" name="CukeJS.jar">
-          <element id="module-output" name="CukeJS" />
-        </element>
+        <element id="artifact" artifact-name="CukeJS:jar" />
       </element>
     </root>
   </artifact>

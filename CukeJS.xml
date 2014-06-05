@@ -3,6 +3,6 @@
   <property name="artifact.output.path" value="" />
 
   <target name="zip" description="zips the content">
-    <zip basedir="${artifact.output.path}\.." file="${artifact.output.path}\..\CukeJS.zip"></zip>
+    <zip basedir="${artifact.output.path}\.."   file="${artifact.output.path}\..\..\CukeJS.zip"></zip>
   </target>
 </project>
