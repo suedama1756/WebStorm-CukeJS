@@ -12,7 +12,7 @@ public class CucumberConfigurationType
 {
     protected CucumberConfigurationType()
     {
-        super("cucumber-javascript-test-runner", "CucumberJS", "CucumberJS", CucumberIcons.Cucumber);
+        super("cucumber-javascript-test-runner", "CukeJS", "CukeJS", CucumberIcons.Cucumber);
         addFactory(new CucumberJavaScriptConfigurationFactory(this));
     }
 

@@ -3,6 +3,9 @@
     <output-path>$PROJECT_DIR$/out/jar</output-path>
     <root id="archive" name="CukeJS.jar">
       <element id="module-output" name="CukeJS" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/plugin.xml" />
+      </element>
     </root>
   </artifact>
 </component>
