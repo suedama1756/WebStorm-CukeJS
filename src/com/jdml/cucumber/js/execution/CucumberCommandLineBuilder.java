@@ -48,7 +48,7 @@ public class CucumberCommandLineBuilder {
         commandLine.addParameter("--require");
         commandLine.addParameter(".");
         commandLine.addParameter("--require");
-        commandLine.addParameter("C:/Program Files (x86)/JetBrains/WebStorm 8.0/plugins/CucumberJavaScript/lib/cucumberjs_formatter_windows.js");
+        commandLine.addParameter(CucumberTeamcityHook.getPath());
 
         //  add additional options
         parameter = runSettings.getArguments().trim();

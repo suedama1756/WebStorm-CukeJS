@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <idea-plugin version="2">
-    <id>cucumber-javascript-plugin</id>
-    <name>Cucumber.js-plugin</name>
-    <description>Alternative Cucumber JS Runner</description>
+    <id>cuke-javascript-plugin</id>
+    <name>CukeJS</name>
+    <description>Alternative Cucumber JS Runner with support for debugging
+        and better handling of relative paths when sharing.</description>
     <version>0.0.6</version>
     <depends>com.intellij.modules.ultimate</depends>
     <depends>cucumber</depends>

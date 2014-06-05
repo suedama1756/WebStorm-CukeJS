@@ -31,7 +31,7 @@ public class CucumberConfigurationType
 
         @Override
         public RunConfiguration createTemplateConfiguration(Project project) {
-            return new CucumberRunConfiguration(project, this, "CucumberJS");
+            return new CucumberRunConfiguration(project, this, "CukeJS");
         }
 
         @Override
