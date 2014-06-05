@@ -7,16 +7,12 @@
     <depends>com.intellij.modules.ultimate</depends>
     <depends>cucumber</depends>
     <depends>JavaScript</depends>
+    <depends>NodeJS</depends>
     <vendor>JetBrains</vendor>
-
     <extensions defaultExtensionNs="com.intellij">
-        <configurationType implementation="ubs.js.cucumber.run.JsCucumberRunConfigurationType"/>
-        <runConfigurationProducer implementation="ubs.js.cucumber.run.JsCucumberRunConfigurationProducer"/>
-        <programRunner implementation="ubs.js.cucumber.run.JsCucumberRunner" order="first"/>
+        <configurationType implementation="com.jdml.cucumber.js.execution.CucumberConfigurationType"/>
+        <programRunner implementation="com.jdml.cucumber.js.execution.CucumberRunner" order="first"/>
+        <programRunner implementation="com.jdml.cucumber.js.debug.CucumberDebugRunner" order="first"/>
         <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
     </extensions>
-
-    <!--<extensions defaultExtensionNs="org.jetbrains.plugins.cucumber.steps">-->
-        <!--<cucumberJvmExtensionPoint implementation="ubs.js.cucumber.CucumberJsExtension"/>-->
-    <!--</extensions>-->
 </idea-plugin>

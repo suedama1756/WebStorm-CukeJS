@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="PLUGIN_MODULE" version="4">
   <component name="DevKit.ModuleBuildProperties" url="file://$MODULE_DIR$/META-INF/plugin.xml" />
-  <component name="NewModuleRootManager">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file://$MODULE_DIR$/out" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="WebStorm 8.0" jdkType="IDEA JDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="cucumber" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="JavaScriptLanguage" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="CucumberJavaScript" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="NodeJS" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="ecmascript6-compiler" level="project" />
-    <orderEntry type="library" name="javascript-openapi" level="project" />
   </component>
 </module>
 
