@@ -23,14 +23,15 @@ import java.util.ArrayList;
 public class CucumberConfigurationEditor
         extends SettingsEditor<CucumberRunConfiguration> {
 
-    private static final String chooseFileToRunMessage = "Feature file or directory";
-    private static final String chooseExecutableMessage = "Cucumber installation path";
+    private static final String chooseFeature = "Feature file or directory";
+    private static final String chooseCucumberPath = "Cucumber installation path";
     private final Project project;
 
     private JPanel mainPanel;
     private TextFieldWithBrowseButton featurePathField;
     private JTextField argumentsField;
     private TextFieldWithBrowseButton cucumberPathField;
+    private JTextField tagsField;
 
     public CucumberConfigurationEditor(Project project) {
         super();
@@ -46,7 +47,7 @@ public class CucumberConfigurationEditor
                 return isFileVisible(file, false);
             }
         };
-        this.featurePathField.addBrowseFolderListener(chooseFileToRunMessage, chooseFileToRunMessage, project, fileToRunChooser);
+        this.featurePathField.addBrowseFolderListener(chooseFeature, chooseFeature, project, fileToRunChooser);
     }
 
     private String guessCucumberInstallationPath() {
@@ -61,6 +62,7 @@ public class CucumberConfigurationEditor
         this.featurePathField.setText(configuration.getRunnerParameters().getFeaturePath());
         this.argumentsField.setText(configuration.getRunnerParameters().getArguments());
         this.cucumberPathField.setText(configuration.getRunnerParameters().getCucumberPath());
+        this.tagsField.setText(configuration.getRunnerParameters().getTags());
         if (StringUtils.isBlank(this.cucumberPathField.getText())) {
             this.cucumberPathField.setText(this.guessCucumberInstallationPath());
         }
@@ -71,6 +73,7 @@ public class CucumberConfigurationEditor
         configuration.getRunnerParameters().setFeaturePath(this.featurePathField.getText());
         configuration.getRunnerParameters().setArguments(this.argumentsField.getText());
         configuration.getRunnerParameters().setCucumberPath(this.cucumberPathField.getText());
+        configuration.getRunnerParameters().setTags(this.tagsField.getText());
     }
 
     @NotNull
@@ -88,7 +91,7 @@ public class CucumberConfigurationEditor
     private static TextFieldWithBrowseButton createCucumberPathField(@NotNull Project project) {
         TextFieldWithBrowseButton result = new TextFieldWithBrowseButton();
         SwingHelper.installFileCompletionAndBrowseDialog(project, result,
-                "", FileChooserDescriptorFactory.createSingleFolderDescriptor());
+                chooseCucumberPath, FileChooserDescriptorFactory.createSingleFolderDescriptor());
         return result;
     }
 }

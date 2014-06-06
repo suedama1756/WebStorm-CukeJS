@@ -8,6 +8,7 @@ import com.intellij.openapi.util.text.StringUtil;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.util.List;
 
 public class CucumberCommandLineBuilder {
     private final Project _project;
@@ -49,6 +50,17 @@ public class CucumberCommandLineBuilder {
         commandLine.addParameter(".");
         commandLine.addParameter("--require");
         commandLine.addParameter(CucumberTeamcityHook.getPath());
+
+        //  add tags
+        List<String> tags = runSettings.getTags();
+        for (int i=0; i<tags.size(); i++) {
+            commandLine.addParameter("--tags");
+            String tag = tags.get(i);
+            if (tag.charAt(0) != '@') {
+                tag = '@' + tag;
+            }
+            commandLine.addParameter(tag);
+        }
 
         //  add additional options
         parameter = runSettings.getArguments().trim();

@@ -10,6 +10,8 @@ public class CucumberRunConfigurationParametersSerializer
     private static final String FEATURE_DIRECTORY_KEY = "feature-directory";
     private static final String ARGUMENTS_KEY = "arguments";
     private static final String CUCUMBER_DIRECTORY_KEY = "cucumber-directory";
+    private static final String TAGS_KEY = "tags";
+
 
     private CucumberRunConfigurationParametersSerializer() {}
 
@@ -22,6 +24,9 @@ public class CucumberRunConfigurationParametersSerializer
         String arguments = readTag(parent, ARGUMENTS_KEY);
         parameters.setArguments(arguments);
 
+        String tags = readTag(parent, TAGS_KEY);
+        parameters.setTags(tags);
+
         String cucumberPath = readTag(parent, CUCUMBER_DIRECTORY_KEY);
         parameters.setCucumberPath(FileUtil.toSystemDependentName(cucumberPath));
     }
@@ -33,6 +38,9 @@ public class CucumberRunConfigurationParametersSerializer
 
         String arguments = parameters.getArguments();
         writeTag(parent, ARGUMENTS_KEY, arguments);
+
+        String tags = parameters.getTags();
+        writeTag(parent, TAGS_KEY, tags);
 
         String cucumberPath = FileUtil.toSystemIndependentName(parameters.getCucumberPath());
         writeTag(parent, CUCUMBER_DIRECTORY_KEY, cucumberPath);

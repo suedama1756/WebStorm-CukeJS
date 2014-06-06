@@ -55,6 +55,7 @@ public class CucumberRunConfiguration
                 .setCucumberPath(parameters.getCucumberPath())
                 .setFeaturePath(parameters.getFeaturePath())
                 .setDebugPort(debugPort)
+                .setTags(parameters.getTags())
                 .build();
         return new CucumberRunProfileState(this, settings, environment);
     }

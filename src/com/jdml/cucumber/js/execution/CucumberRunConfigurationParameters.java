@@ -5,6 +5,7 @@ public class CucumberRunConfigurationParameters
     private String featurePath = null;
     private String arguments;
     private String executablePath;
+    private String tags;
 
     public CucumberRunConfigurationParameters() {}
 
@@ -31,6 +32,16 @@ public class CucumberRunConfigurationParameters
     public String getCucumberPath()
     {
         return this.executablePath;
+    }
+
+    public String getTags()
+    {
+        return tags;
+    }
+
+    public void setTags(String tags)
+    {
+        this.tags = tags;
     }
 
     public void setCucumberPath(String executablePath)
