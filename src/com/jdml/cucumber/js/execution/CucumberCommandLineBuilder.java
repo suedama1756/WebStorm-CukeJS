@@ -55,11 +55,7 @@ public class CucumberCommandLineBuilder {
         List<String> tags = runSettings.getTags();
         for (int i=0; i<tags.size(); i++) {
             commandLine.addParameter("--tags");
-            String tag = tags.get(i);
-            if (tag.charAt(0) != '@') {
-                tag = '@' + tag;
-            }
-            commandLine.addParameter(tag);
+            commandLine.addParameter(tags.get(i));
         }
 
         //  add additional options

@@ -4,6 +4,7 @@ import java.util.*;
 
 public final class CucumberRunSettings
 {
+    private static final ArrayList<String> EMPTY_TAGS = new ArrayList<String>();
     private String _featurePath;
     private String _cucumberPath;
     private String _arguments;
@@ -62,29 +63,59 @@ public final class CucumberRunSettings
         }
 
         public Builder setTags(String tags) {
-            setTags(tags != null ? Arrays.asList(tags.split(" ")) : null);
+            _tags = tags != null ? normalizeTags(tags) : null;
             return this;
         }
 
-        private void setTags(List<String> tags) {
+        private ArrayList<String> normalizeTags(String tags) {
             if (tags == null) {
-                _tags = null;
-            } else {
-                _tags = new ArrayList<String>();
-                for (int i=0; i<tags.size(); i++) {
-                    String tag = tags.get(i);
+                return null;
+            }
+
+            //  normalize whitespace
+            tags = tags.replaceAll(",\\s+", ",").replaceAll("\\s+", " ");
+
+            //  allocate result
+            ArrayList<String> result = new ArrayList<String>();
+
+            //  add to list in groups, e.g. "a,b c" will be added as ["a,b", "c"]
+            String[] tagGroups = tags.split(" ");
+            for (int i=0; i<tagGroups.length; i++) {
+                String[] tagGroup = tagGroups[i].split(",");
+
+                //  normalize tag group
+                StringBuffer output = new StringBuffer();
+                for (int j=0; j<tagGroup.length; j++) {
+                    String tag = normalizeTag(tagGroup[j]);
                     if (tag != null) {
-                        tag = tag.trim();
-                        if (!tag.isEmpty()) {
-                            _tags.add(tag);
+                        if (output.length() > 0) {
+                            output.append(',');
                         }
+                        output.append(tag);
                     }
                 }
 
-                if (_tags.size() == 0) {
-                    _tags = null;
+                //  add tag group
+                if (output.length() > 0) {
+                    result.add(output.toString());
                 }
             }
+
+            return result;
+        }
+
+        private String normalizeTag(String tag) {
+            if (tag.charAt(0) == '~') {
+                if (tag.length() == 1) {
+                    return null;
+                }
+                if (tag.charAt(1) != '@') {
+                    return "~@" + tag.substring(1);
+                }
+            } else if (tag.charAt(0) != '@') {
+                return "@" + tag;
+            }
+            return tag;
         }
 
         public CucumberRunSettings build() {
@@ -92,7 +123,7 @@ public final class CucumberRunSettings
             result._cucumberPath = _cucumberPath != null ? _cucumberPath : "";
             result._featurePath = _featurePath != null ? _featurePath : "";
             result._arguments = _arguments != null ? _arguments : "";
-            result._tags = Collections.unmodifiableList(_tags != null ? _tags : new ArrayList<String>());
+            result._tags = Collections.unmodifiableList(_tags != null ? _tags : EMPTY_TAGS);
             result._debugPort = _debugPort;
             return result;
         }
