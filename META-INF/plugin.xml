@@ -4,7 +4,7 @@
     <name>CukeJS</name>
     <description>Alternative Cucumber JS Runner with support for debugging
         and better handling of relative paths when sharing.</description>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <depends>com.intellij.modules.ultimate</depends>
     <depends>cucumber</depends>
     <depends>JavaScript</depends>
