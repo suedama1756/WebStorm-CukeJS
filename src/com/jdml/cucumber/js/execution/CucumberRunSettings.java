@@ -105,6 +105,10 @@ public final class CucumberRunSettings
         }
 
         private String normalizeTag(String tag) {
+            if (tag.length() == 0) {
+                return null;
+            }
+
             if (tag.charAt(0) == '~') {
                 if (tag.length() == 1) {
                     return null;
